@@ -1,0 +1,13 @@
+1. ssh
+여러 ssh에 접속하고 싶을때..
+ssh-add ~/.ssh/id_rsa_poby
+
+2. elastic search
+install from mac
+
+brew install elasticsearch
+sudo brew postinstall elasticsearch
+sudo elasticsearch --config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+
+test if elasticsearch is working good:
+curl -X GET http://localhost:9200
