@@ -1,4 +1,39 @@
 #######
-express js 를 사용하여 웹앱 만들기
+#express js 를 사용하여 웹앱 만들기
 npm init
 npm install express --save
+
+# express generator를 사용해서 보일러 플레이트 만들기
+# 먼저, install (-g로 글로벌하게 인스톨. 즉, 
+npm install express-generator -g
+express-generator@4.13.1 /usr/local/lib/node_modules/express-generator
+├── sorted-object@1.0.0
+├── commander@2.7.1 (graceful-readlink@1.0.1)
+└── mkdirp@0.5.1 (minimist@0.0.8)
+
+
+xx-schoi:Tutorest schoi$ express MainApp
+
+   create : MainApp
+   create : MainApp/package.json
+   create : MainApp/app.js
+   create : MainApp/public
+   create : MainApp/public/javascripts
+   create : MainApp/public/images
+   create : MainApp/public/stylesheets
+   create : MainApp/public/stylesheets/style.css
+   create : MainApp/views
+   create : MainApp/views/index.jade
+   create : MainApp/views/layout.jade
+   create : MainApp/views/error.jade
+   create : MainApp/routes
+   create : MainApp/routes/index.js
+   create : MainApp/routes/users.js
+   create : MainApp/bin
+   create : MainApp/bin/www
+
+   install dependencies:
+     $ cd MainApp && npm install
+
+   run the app:
+     $ DEBUG=MainApp:* npm start

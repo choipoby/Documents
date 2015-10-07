@@ -1,0 +1,76 @@
+KeyNote
+- Facebook 
+	:text -> image -> video -> VR/AR
+	:performance should be a feature
+		- Before deployment!!
+		- Instrumentation
+
+##############
+data sessuib 1
+##############
+
+Twitter session
+
+Real-time
+- trend
+- conversation
+- recommendation
+- search
+
+-----
+Storm
+-----
+problems ins data flow
+- queue contention
+- zeromq
+- busy waiting
+language 
+	- clojuer
+	- java
+	- zeromq : c++
+
+overloaded Zookeeper
+- zookeeper cluster => still having issue with zookeeper
+zookeeper usage 
+- kafka (67%)
+	: offset/partition written in every 2 sec
+	: saturating zookeeper
+- storm runtime (33%)
+	: heartbeat every 3 sec
+
+additional issue
+- no batching, implicit batching by 0mq
+- lack of back pressure -> drops tuples unpredictably
+
+-----
+Heron
+-----
+support for back pressure
+
+1. topology master
+- monitoring of containers
+- gateway for metrics
+- assign roles
+
+aurora is on top of mesos
+
+container has stremaing manager, and metrics manager
+
+2. zookeepr - state recovery
+
+3. Stream manager
+- routes tuples
+- implement back pressure
+- ack management
+
+
+back pressure
+- TCP back pressure
+- spout base back pressure
+- stagewise back pressure
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+=====
+kafka
+=====
+1. zookeeper
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+2. kafka broker  
+bin/kafka-server-start.sh config/server.properties
+
+===
+sbt
+===
+sbt package
+sbt "run localhost:9092 tweeter"
+

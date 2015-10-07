@@ -1,0 +1,68 @@
+
+
+################
+List
+
+- convention : operator ending in ":" associate to the right.
+ex) val nums = 1::2::3::4
+==> val nums = 1::(2::(3::(4::Nil)))
+
+method call of right-hand operand
+==> Nill.::(4).::(3).::(2).::(1)
+
+- operations
+head
+tail
+isEmpty
+
+- List pattern
+Nil
+p::ps
+List(p1, ..., pn)
+ex)
+1::2::xs - list start with 1, then 2
+x::Nil
+List(x)
+List()
+List(2::xs)
+
+- insertion sort for list
+def insert(x: Int, xs: List[Int]): List[Int] = xs match {
+	case List() => x::Nil
+	case y::ys  => if(x<=y) x::xs else y::insert(x, ys) 
+}
+def isort(xs: List[Int]): List[Int] = xs match {
+	case List() => List()
+	case y::ys  => insert(y, isort(ys))
+}
+
+- List method
+xs.length
+xs.last : last element in the list
+xs.init : list except the last
+xs take n : list of n element from xs
+xs drop n : rest of collection after taking n element
+xs(n)
+xs ++ ys : concatenation all element of xs followed by all elements of ys
+xs.revers
+xs updated (n, x) : new list of n-th element is x
+xs indexOf x
+xs contains x
+
+concatenate lists
+xs:::ys
+
+- merge sort
+pattern matching
+recursion
+pair
+
+
+
+
+
+
+
+
+
+
