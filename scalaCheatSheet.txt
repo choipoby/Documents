@@ -1,3 +1,157 @@
+Scala Cheat Sheet Sekwon Choi
+--------
+Function
+	Passing argument to function
+		Call-by-value : evaluates every function argument only once
+			def someFunction(x: Int, y: Int)
+		Call-by-name  : not evaluated if unused
+			def someFunction(x: Int, y: => Int)
+	Function type :	type A => B. Associate to right
+	Currying
+		def sum(f: Int => Int)(a: Int, b: Int) : Int = {}
+			is a type of (Int => Int) => (Int, Int) => Int
+	Precondition
+		require: ex) require(x != 0, "divider should not be zero")
+			when not met, throws IllegalArgumentExceptions with given message
+		assert: throws AssertError
+-------
+Classes
+	- class can have only 1 super class!!
+	Constructor
+		primary constructor : implicit constructor
+		auxiliary constructor : this method
+			class Rational(x: Int, y: Int) {
+				def this(x: Int) = this(x, 1)
+				...
+			}
+	abstract class - can contain members which are missing an implementation
+		abstract class Base {
+			def foo = 1
+			def bar: Int
+		}
+		class Sub extends Base {
+			override def foo = 2 //redefine existing definition using override
+			def bar = 3
+		}
+	class hierarchy
+		scala.Any
+			- scala.AnyRef
+				- scala.ScalaObject
+					- scala.Iterable
+						- scala.Seq
+							- scala.List
+			- scala.AnyVal
+				- scala.Double
+				- scala.Float
+				- scala.Long
+				- scala.Int
+				- scala.Short
+				- scala.Byte
+				- scala.Unit
+				- scala.Boolean
+				- scala.Char
+
+			- scala.Null : subtype of every class inherited from Object
+				- scala.Nothing : bottom type. subtype of every other type.
+------
+Traits
+	- like interface in Java, but with fields and concrete methods
+	- traits can not have value parameters! only classes can have parameters
+		trait Plannar {
+			def height: Int
+			def width: Int
+			def surface = height * width
+		}
+		class Square extends Shape with Plannar with Movable ....
+------
+Object
+	- object is singletone.
+	- No other object can be created.
+	- singletone objects are values.
+	object Empty extens Inset{
+		def contains(x: Int): Boolean = false
+		def insert(x: Int): Inset = new NonEmpty(x, Empty, Empty)
+	}
+
+Program
+	standalone application contains an object with a main method
+	object Hello {
+		def main(args: Array[String]) = {
+			....
+		}
+	}
+-------------------
+Functions as Object
+	function value와 class안의 method는 다르다!
+	function values are treated as "Object"
+	"A => b" is abbreviation for "class scala.Function1[A,B]" which is defined as below
+		package scala
+		trait Function1[A,B] {
+			def apply(x: A): B
+		}
+	function expantion
+		(x: Int) => x * x
+		----> is expanded to
+		{ class AnonFun extends Function1[Int, Int] {
+				def apply(x: Int) = x * x
+			}
+			new AnonFun
+		}
+		----> or using anonymous class syntax
+		new Function1[Int, Int] {
+			def apply(x: Int) = x * x
+		}
+	function call
+		f(a,b) -----> is expanded to f.apply(a, b)
+		example)
+			val f = (x: Int) => x * x
+			f(7)
+			-----> is expands to
+			val f = new Function1[Int, Int] {
+				def apply(x: Int) = x * x
+			}
+			f.apply(7)
+------
+Bounds
+S <: T means: lower bounds: S is a subtype of T
+S >: T means: upper bounds: S is supertype of T
+	def assertAllPositive[S <: InSet](r: S): S = ...
+--------
+Variance
+	when A <: B,
+	C[A] <: C[B] ----> covariant
+	C[A] >: C[B] ----> contravariant
+	neither C[A] nor C[B] is a subtype of the other ----> nonvariant
+
+	클래스와 type parameter와의 관계를 나타내는법
+	class C[+A] {...} C is covariant
+	class C[-A] {...} C is contravariant
+	class C[A] {...} C is nonvariant
+
+	Functions are
+		- contravariant in their argument
+		- covariant in their result type
+		package scala
+		trait Function1[-T, +U]{
+			def apply(x: T): U
+		}
+----------
+case class
+	trait Expr
+	case class Number(n: Int) extends Expr
+	case class Sum(e1: Expr, e2: Expr) extends Expr
+
+	def eval(e: Expr): Int = e match {
+		case Number(n) => n
+		case Sum(e1, e2) => eval(e1) + eval(e2)
+	}
+----------------
+pattern matching
+	constructors of case classes
+	variables
+	wildcard patterns _
+	constants
+
 
 
 ################
@@ -29,7 +183,7 @@ List(2::xs)
 - insertion sort for list
 def insert(x: Int, xs: List[Int]): List[Int] = xs match {
 	case List() => x::Nil
-	case y::ys  => if(x<=y) x::xs else y::insert(x, ys) 
+	case y::ys  => if(x<=y) x::xs else y::insert(x, ys)
 }
 def isort(xs: List[Int]): List[Int] = xs match {
 	case List() => List()
@@ -56,13 +210,3 @@ xs:::ys
 pattern matching
 recursion
 pair
-
-
-
-
-
-
-
-
-
-
