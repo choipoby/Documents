@@ -16,3 +16,34 @@ sbt
 sbt package
 sbt "run localhost:9092 tweeter"
 
+
+spark
+=====
+sudo ./start-master.sh 
+sudo ./start-slave.sh spark://lgml-schoi:7077
+sudo ./bin/spark-submit --class "NetworkWordCount" ~/GitHub/Scalas/NetworkWordCount/target/scala-2.11/networkwordcount_2.11-1.0.jar
+
+code
+import org.apache.spark._
+import org.apache.spark.streaming._
+import org.slf4j.LoggerFactory
+
+object NetworkWordCount {
+  def main(args: Array[String]) {
+    println("Hello NetworkWordCount")
+
+    //val conf = new SparkConf().setMaster("spark://lgml-schoi:7077").setAppName("NetworkWordCount")
+    val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCount")
+    val ssc = new StreamingContext(conf, Seconds(1))
+
+    val lines = ssc.socketTextStream("localhost", 19999)
+    val words = lines.flatMap(_.split(" "))
+
+    val pairs = words.map(word => (word, 1))
+    val wordCounts = pairs.reduceByKey(_ + _)
+    wordCounts.print()
+    ssc.start()
+    ssc.awaitTermination()
+  }
+}
+

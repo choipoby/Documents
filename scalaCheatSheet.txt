@@ -151,12 +151,14 @@ pattern matching
 	variables
 	wildcard patterns _
 	constants
-
-
-
-################
+----
 List
-
+	- immutable
+	- recursive
+	- homogeneous (same element type)
+	constructors
+		x::xs
+		
 - convention : operator ending in ":" associate to the right.
 ex) val nums = 1::2::3::4
 ==> val nums = 1::(2::(3::(4::Nil)))
