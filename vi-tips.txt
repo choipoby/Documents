@@ -1,0 +1,22 @@
+split window vertically
+:vsplit
+
+split window horizontally
+:split
+
+move around the window
+ctrl + w, ctrl + w
+
+open a new file
+:e file name
+
+select a block
+esc + v
+
+delete a block which is selected above
+d
+
+delete from where your cursor is
+esc + D
+
+

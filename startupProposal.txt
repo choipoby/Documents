@@ -1,0 +1,40 @@
+
+What kind of business are we in?
+
+Currently, I feel that we are in the business for educational content.
+with 1. TTS feature for ease of use.
+with 2. Wiki feature for dynamic content update.
+with 3. Discussion feature for user involvement.
+
+Then, are we fulfilling below two cretia that I think is crucial for any content business?
+
+-----------
+
+What is good service that provides any kind of content.
+
+1. User want to spend time with my service so much, so even he/she is willing to pay if it is not free.
+- I am not saying that we need to charge for the service. I am saying that, "contents are so good and service is easy to use, he/she really wants to spend time with the service however he/she is busy!"
+
+2. Service should bring monetary compensation to whoever provide the content
+- If not, who's gonna provide you best content? If there is no compensation for great content, your service will be full of trashes.
+
+---------------
+
+
+
+My simple categorization of content business
+1. if ( content provider == business owner) ==> content creation business.
+2. if ( content provider != business owner) ==> content service business.
+
+yFunnel is at the border line between Content creation business and Content service business.
+
+"We basically create a initial content, and asks the user to maintain the content"
+
+
+=> requires enormous funding or people.
+=> (tech) news business is easy to build, but other than that, generally, content creation business may be very difficult to build
+
+
+
+
+=> this is where we were actually building.
